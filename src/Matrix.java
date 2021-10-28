@@ -32,20 +32,20 @@ public class Matrix {
             temp=temp.next;
         }
     }
-//    public void search(int value){
-//        L3:
-//        for(int i=0;i<matrix.length;i++){
-//            Node_ME temp=this.get(i).head;
-//            for(int j=0;j<this.get(i).size;j++){
-//                if(temp.element==value){
-//                    System.out.println("EXIST");
-//                    break L3;
-//                }
-//                temp=temp.next;
-//            }
-//        }
-//        System.out.println(" NOT EXIST");
-//    }
+    public void search(int value){
+        L3:
+        for(int i=0;i<matrix.length;i++){
+            Node_ME temp=this.get(i).head;
+            for(int j=0;j<this.get(i).size;j++){
+                if(temp.element==value){
+                    System.out.println("EXIST");
+                    break L3;
+                }
+                temp=temp.next;
+            }
+        }
+        System.out.println(" NOT EXIST");
+    }
 //    public void update(int row, int col, int value){
 //        Node_ME temp=this.get(row).head;
 //        L4:
