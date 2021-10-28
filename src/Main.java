@@ -14,9 +14,10 @@ public class Main {
                 }
             }
         });
-        //System.out.println(matrix[2].head.next.element);
+        //System.out.println(matrix.get(2).head.next.element);
     }
-    public static MyLinkedList[] matrix=new MyLinkedList[10];
+    public static Matrix matrix=new Matrix(10);
+
     public static void readFile() throws IOException {
         File matrix_file =new File("M(10,5).csv");
         Reader r=new FileReader("M(10,5).csv");
@@ -24,8 +25,8 @@ public class Main {
         String DELIMITER = ",";
         //MyLinkedList[] matrix=new MyLinkedList[10];
          for(int i=0;i<10;i++){
-             MyLinkedList l=new MyLinkedList();
-             Node_ME temp_prev =l.head;
+             //MyLinkedList l=new MyLinkedList();
+             Node_ME temp_prev =matrix.get(i).head;
              //l.head=null;
              //l.tail=null;
              String[] s=br.readLine().split(DELIMITER);
@@ -43,14 +44,14 @@ public class Main {
 //                         temp_prev=newNode;
 //                     }
                      Node_ME newNode=new Node_ME(j,Integer.valueOf(s[j]));
-                     temp_prev.next=newNode
-                     newNode.next= l.tail;
+                     temp_prev.next=newNode;
+                     newNode.next= null;
                      temp_prev=newNode;
-                     l.size++;
+                     matrix.get(i).size++;
                  }
              }
 
-             matrix[i]=l;
+             //matrix[i]=l;
          }
     }
 }

@@ -1,16 +1,17 @@
 public class MyLinkedList {
     Node_ME head;
-    Node_ME tail;
+    //Node_ME tail;
     int size;
     public MyLinkedList(){
         head=new Node_ME(null);
-        tail=new Node_ME(null);
-        head.next=tail;
+        //tail=new Node_ME(null);
+        head.next=null;
+        //tail.next
         size=0;
     }
     public int getSize(){
         Node_ME temp=head;
-        while (temp.next!=tail){
+        while (temp.next!=null){
             size++;
             temp=temp.next;
         }
@@ -28,7 +29,7 @@ public class MyLinkedList {
 //            }
 //        }
 //    }
-    
+
 
 
 }
