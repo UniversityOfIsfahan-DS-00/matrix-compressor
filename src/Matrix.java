@@ -20,18 +20,18 @@ public class Matrix {
             temp=temp.next;
         }
     }
-//    public void delete(int row, int col){
-//        Node_ME temp=this.get(row).head;
-//        L2:
-//        for(int i=0;i<col;i++){
-//            if(temp.next.column==col){
-//                temp.next=temp.next.next;
-//                this.get(row).size--;
-//                break L2;
-//            }
-//            temp=temp.next;
-//        }
-//    }
+    public void delete(int row, int col){
+        Node_ME temp=this.get(row).head;
+        L2:
+        for(int i=0;i<col;i++){
+            if(temp.next.column==col){
+                temp.next=temp.next.next;
+                this.get(row).size--;
+                break L2;
+            }
+            temp=temp.next;
+        }
+    }
 //    public void search(int value){
 //        L3:
 //        for(int i=0;i<matrix.length;i++){
