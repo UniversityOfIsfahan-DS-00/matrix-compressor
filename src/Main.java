@@ -16,7 +16,7 @@ public class Main {
         });
         //System.out.println(matrix.get(2).head.next.element);
     }
-    public static Matrix matrix=new Matrix(10);
+    public static Matrix matrix=new Matrix(10,10,5);
 
     public static void readFile() throws IOException {
         File matrix_file =new File("M(10,5).csv");

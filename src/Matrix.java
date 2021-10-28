@@ -1,7 +1,13 @@
-public class Matrix {
+import java.io.*;
+
+public class Matrix implements Serializable {
     MyLinkedList[] matrix;
-    public Matrix(int size){
+    int row;
+    int col;
+    public Matrix(int size,int row,int col){
         matrix=new MyLinkedList[size];
+        this.row=row;
+        this.col=col;
     }
     public MyLinkedList get(int i){
         return matrix[i];
@@ -46,32 +52,46 @@ public class Matrix {
         }
         System.out.println(" NOT EXIST");
     }
-//    public void update(int row, int col, int value){
-//        Node_ME temp=this.get(row).head;
-//        L4:
-//        while (temp.next!=null){
-//            if(temp.column==col){
-//                temp.element=value;
-//                break L4;
-//            }
-//            temp=temp.next;
-//        }
-//    }
-//    public void print(boolean type){
-//        if(type==true){
-//
-//            for(int i=0;i<matrix.length;i++){
-//                Node_ME temp=this.get(i).head;
-//                for(int j=0;j<this.get(i).size;j++){
-//                    System.out.println("[ "+i+" ] "+"[ "+temp.column+" ] "+"[ "+temp.element+" ]");
-//                    temp=temp.next;
-//                }
-//            }
-//        }else{
-//
-//        }
-//    }
-//    public void save_file(){
-//
-//    }
+    public void update(int row, int col, int value){
+        Node_ME temp=this.get(row).head;
+        L4:
+        while (temp.next!=null){
+            if(temp.column==col){
+                temp.element=value;
+                break L4;
+            }
+            temp=temp.next;
+        }
+    }
+    public void print(boolean type){
+        if(type==true){
+
+            for(int i=0;i<matrix.length;i++){
+                Node_ME temp=this.get(i).head;
+                for(int j=0;j<this.get(i).size;j++){
+                    System.out.println("[ "+i+" ] "+"[ "+temp.column+" ] "+"[ "+temp.element+" ]");
+                    temp=temp.next;
+                }
+            }
+        }else{
+            for(int i=0;i<this.row;i++){
+                Node_ME temp=this.get(i).head;
+                for(int j=0;j<this.col;j++){
+                    if(temp.column==col){
+                        System.out.println(temp.element);
+                        temp=temp.next;
+                    }
+                    else{
+                        System.out.println(0);
+                    }
+                }
+                System.out.println();
+            }
+        }
+    }
+    public void save_file() throws IOException {
+        FileOutputStream fo=new FileOutputStream("save.csv");
+        ObjectOutputStream bs=new ObjectOutputStream(fo);
+        bs.writeObject(Main.matrix);
+    }
 }

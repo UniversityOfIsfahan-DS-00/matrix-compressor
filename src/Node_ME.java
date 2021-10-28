@@ -1,4 +1,6 @@
-public class Node_ME {
+import java.io.Serializable;
+
+public class Node_ME implements Serializable {
         int column;
         int element;
         Node_ME next;

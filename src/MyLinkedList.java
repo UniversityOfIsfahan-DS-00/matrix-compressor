@@ -1,4 +1,6 @@
-public class MyLinkedList {
+import java.io.Serializable;
+
+public class MyLinkedList implements Serializable {
     Node_ME head;
     //Node_ME tail;
     int size;
