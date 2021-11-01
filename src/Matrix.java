@@ -84,11 +84,13 @@ public class Matrix implements Serializable {
                 }
             }
         }else{
+            Node_ME temp;
             for(int i=0;i<this.row;i++){
-                Node_ME temp=this.get(i).head;
+                temp=this.get(i).head;
+                //temp=temp.next;
                 for(int j=0;j<this.col;j++){
                     if(temp.column==col){
-                        System.out.printf("%d ",temp.element);
+                        System.out.printf("%d ",j);
                         temp=temp.next;
                     }
                     else{
@@ -108,14 +110,19 @@ public class Matrix implements Serializable {
         fo.close();
     }
     public void saveCsv() throws IOException {
+        File f=new File("saveCsv.csv");
+        f.delete();
         FileWriter fw= new FileWriter("saveCsv.csv",true);
         PrintWriter pw=new PrintWriter(fw);
+        f.createNewFile();
+        //pw.flush();
         Node_ME temp;
         for(int i=0;i<matrix.size();i++){
             temp=matrix.get(i).head;
             temp=temp.next;
             for(int j=0;j<matrix.get(i).size;j++){
                 pw.print("[ "+i+" ] "+"[ "+temp.column+" ] "+"[ "+temp.element+" ] ,");
+                temp=temp.next;
             }
         }
         pw.close();
