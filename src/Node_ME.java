@@ -12,8 +12,8 @@ public class Node_ME implements Serializable {
             this.element=element;
         }
 
-    public Node_ME(Integer element) {
-            this.element=element;
+    public Node_ME() {
+
     }
 
 }

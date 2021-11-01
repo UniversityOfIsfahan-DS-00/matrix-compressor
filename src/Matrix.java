@@ -1,18 +1,24 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class Matrix implements Serializable {
-    MyLinkedList[] matrix;
+    //MyLinkedList[] matrix;
+    ArrayList<MyLinkedList> matrix;
     int row;
     int col;
     public Matrix(int size,int row,int col){
-        matrix=new MyLinkedList[size];
+        matrix=new ArrayList<>();
+        for(int i=0;i<size;i++){
+            matrix.add(new MyLinkedList());
+        }
         this.row=row;
         this.col=col;
     }
     public MyLinkedList get(int i){
-        return matrix[i];
+        return matrix.get(i);
     }
     public void insert(int row, int col, int value){
+        //if()
         Node_ME temp=this.get(row).head;
         L1:
         for(int i=0;i<col;i++){
@@ -39,18 +45,21 @@ public class Matrix implements Serializable {
         }
     }
     public void search(int value){
+        boolean exist=false;
         L3:
-        for(int i=0;i<matrix.length;i++){
+        for(int i=0;i<matrix.size();i++){
             Node_ME temp=this.get(i).head;
             for(int j=0;j<this.get(i).size;j++){
                 if(temp.element==value){
                     System.out.println("EXIST");
+                    exist=true;
                     break L3;
                 }
                 temp=temp.next;
             }
         }
-        System.out.println(" NOT EXIST");
+        if(exist==false)
+            System.out.println(" NOT EXIST");
     }
     public void update(int row, int col, int value){
         Node_ME temp=this.get(row).head;
@@ -66,8 +75,9 @@ public class Matrix implements Serializable {
     public void print(boolean type){
         if(type==true){
 
-            for(int i=0;i<matrix.length;i++){
+            for(int i=0;i<matrix.size();i++){
                 Node_ME temp=this.get(i).head;
+                temp=temp.next;
                 for(int j=0;j<this.get(i).size;j++){
                     System.out.println("[ "+i+" ] "+"[ "+temp.column+" ] "+"[ "+temp.element+" ]");
                     temp=temp.next;
@@ -78,11 +88,12 @@ public class Matrix implements Serializable {
                 Node_ME temp=this.get(i).head;
                 for(int j=0;j<this.col;j++){
                     if(temp.column==col){
-                        System.out.println(temp.element);
+                        System.out.printf("%d ",temp.element);
                         temp=temp.next;
                     }
                     else{
-                        System.out.println(0);
+                        System.out.printf("%d ",0);
+
                     }
                 }
                 System.out.println();
@@ -93,5 +104,21 @@ public class Matrix implements Serializable {
         FileOutputStream fo=new FileOutputStream("save.csv");
         ObjectOutputStream bs=new ObjectOutputStream(fo);
         bs.writeObject(Main.matrix);
+        bs.close();
+        fo.close();
+    }
+    public void saveCsv() throws IOException {
+        FileWriter fw= new FileWriter("saveCsv.csv",true);
+        PrintWriter pw=new PrintWriter(fw);
+        Node_ME temp;
+        for(int i=0;i<matrix.size();i++){
+            temp=matrix.get(i).head;
+            temp=temp.next;
+            for(int j=0;j<matrix.get(i).size;j++){
+                pw.print("[ "+i+" ] "+"[ "+temp.column+" ] "+"[ "+temp.element+" ] ,");
+            }
+        }
+        pw.close();
+        fw.close();
     }
 }
